@@ -1,0 +1,71 @@
+import java.io.*;
+import java.util.*;
+/**
+ *
+ * @author Sourav Kumar Paul
+ */
+class SPRNMBRS {
+    public static void main(String[] args) throws IOException{
+        Reader in = new Reader(new InputStreamReader(System.in));
+        PrintWriter out = new PrintWriter(new OutputStreamWriter(System.out));
+        int test = in.nextInt();
+        while(test-->0)
+        {
+            long l = in.nextLong();
+            long r= in.nextLong();
+            long ans=0;
+            long init = 2;
+            while(init <= r)
+            {
+                long x = init;
+                while(x<=r)
+                {
+                    if(x>=l && x<=r)
+                        ans++;
+                    x*=3;
+                }
+                init*=2;
+            }
+            if(l==1 )
+                ans++;
+            out.println(ans);
+        }
+        out.flush();
+        out.close();
+    }
+    public static class Reader {
+        public BufferedReader reader;
+        public StringTokenizer st;
+ 
+        public Reader(InputStreamReader stream) {
+            reader = new BufferedReader(stream);
+            st = null;
+        }
+ 
+        public String next() {
+            while (st == null || !st.hasMoreTokens()) {
+                try {
+                    st = new StringTokenizer(reader.readLine());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            return st.nextToken();
+        }
+ 
+        public int nextInt() {
+            return Integer.parseInt(next());
+        }
+        public String nextLine() throws IOException{
+            return reader.readLine();
+        }
+        public long nextLong(){
+            return Long.parseLong(next());
+        }
+        public double nextDouble(){
+            return Double.parseDouble(next());
+        }
+ 
+    }
+}
+ 
